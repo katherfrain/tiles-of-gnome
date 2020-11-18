@@ -7,7 +7,7 @@ export default class Weapon extends React.Component{
             weaponName: '',
             specialAttacks: null, 
             weaponDamage: 2,
-            weaponBreakChance: 0.5
+            weaponBreakChance: 0.05
         })
     }
 
