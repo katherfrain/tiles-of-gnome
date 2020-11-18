@@ -10,7 +10,7 @@ export default class Tile extends React.Component {
         }
     }
     decideTypeTile(list) {
-        var i = Math.floor(Math.random()*list.length);
+        var randomTile = Math.floor(Math.random()*list.length);
         return randomTile;
     }
     deleteRandomTile(list) {
@@ -23,12 +23,9 @@ export default class Tile extends React.Component {
 
     }
     updateTileAccessibility = () => {
-        
+        console.log('fuck')
         }
     }
-
-    
-}
 
 // if(tasksQueue.length > 0){
 //     tryMoveTo(tasksQueue.pop());

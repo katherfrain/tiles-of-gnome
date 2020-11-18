@@ -1,6 +1,6 @@
 import React from 'react';
 import Weapon from './Weapon';
-import queenbee from './images/queenbee'
+import queenbee from './images/queenbee.svg'
 
 
 const defaultWeapon = new Weapon();
@@ -18,6 +18,14 @@ export default class Player extends React.Component {
         }
     }
 
+    useKeyPress(e) {
+        e.preventDefault();
+        //move(e.key.replace("Arrow", "").toLowerCase())
+        const dir = e.key.replace("Arrow", "").toLowerCase();
+        console.log(dir)
+    }
+
+    
     levelUp = () => {
         if(this.xp >= (this.level*40)) {
             return (
