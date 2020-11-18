@@ -1,6 +1,6 @@
 import React from 'react';
 import Weapon from './Weapon';
-import queenbee from './images/queenbee'
+import queenbee from './images/queenbee.svg'
 
 
 const defaultWeapon = new Weapon();
