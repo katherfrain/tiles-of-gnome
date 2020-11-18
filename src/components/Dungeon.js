@@ -728,14 +728,12 @@ export default class Dungeon extends React.Component {
       if(tasksQueue.length > 0){
         this.tryMoveTo(tasksQueue.pop());
       } else {
-      
-        if(this.upPressed) this.tryMoveTo(playerTile.up);
-        if(this.downPressed) this.tryMoveTo(playerTile.down);
-        if(this.leftPressed) this.tryMoveTo(playerTile.left);
-        if(this.rightPressed) this.tryMoveTo(playerTile.right);
+        if(this.state.upPressed) this.tryMoveTo(playerTile.up);
+        if(this.state.downPressed) this.tryMoveTo(playerTile.down);
+        if(this.state.leftPressed) this.tryMoveTo(playerTile.left);
+        if(this.state.rightPressed) this.tryMoveTo(playerTile.right);
       }
     }
-    
     
     if(this.state.needReRender){
       this.setState({
