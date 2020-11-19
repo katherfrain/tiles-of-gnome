@@ -1,5 +1,5 @@
 body, html {
-  background: #000;
+  background: white;
   color: #efd;
   font-family: 'Chewy', sans-serif;
   text-align: center;
@@ -52,13 +52,10 @@ hr {
 
 .cell {
   float: left;
-  width: 30px;
   height: 30px;
+  width: 30px;
   margin-left: 3px;
   margin-top: 3px;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -o-pixelated;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -85,20 +82,25 @@ hr {
   height: 4px;
 }
 
+
 .cell-0 {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAgMAAADwXCcuAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACVBMVEUGDAcKEgwAAACTHOO3AAAAAWJLR0QCZgt8ZAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAACZJREFUCNdjYGBhYHB0CGAIDQViUQEGBlEHBodQGN+BIZRBAMQGAHaLBoc3vdhDAAAAAElFTkSuQmCC');
+  background-color: white;
 }
 
+/* player sprite - sprite used loosely, no animation components */
 .player {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKBAMAAAB/HNKOAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAHlBMVEUKEgwgUGEAHzMAAABKNSb3w5yzZk82HAkTPRsAHwIiT7F7AAAAAWJLR0QDEQxM8gAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAD1JREFUCNdjYGAUUmZgYGAJSQaSomFKBgyM4uVKygyCQFIJSBYByTBBQaUwhrDOmZ1hDMadQMhg0WncYQwA8PEK5UBGxM8AAAAASUVORK5CYII=');
+  background-image: url('./components/images/queenbee.png')
+  
 }
 
+/* standard honeycomb */
 .cell-1 {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAkklEQVQYV2P0MuX6LyQoygADZ689YTDWkoHz371/DWYzghTCRRkYGO4//8mgKMmOLISq8N2nfwwq8uIMIBPxKoRZj64QZIAQHxMDo6YMM4rVGHZCBRhj3OT/wxyMrAhmw52HLxk+fv3NAFcIswKkGKQIphkkjqEQ5BmQAqwKLdQ5UNwI0s3PzQp3BYgPDkdiPQMAOrJS1duq3aQAAAAASUVORK5CYII=');
+  background-image: url('./components/images/honeycomb-1.png');
 }
 
+/* level 1 enemy drone */
 .cell-21 {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKBAMAAAB/HNKOAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEUKEgxsSCJNLAjmHyYAAAAqAwRvAAAAAWJLR0QEj2jZUQAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAB5JREFUCNdjYCAGCAoBCWZBJRUGBiUQYGBxcXFhAAAQ1wH44BDudAAAAABJRU5ErkJggg==');
+  background-image: url('./components/images/warrior.png');
 }
 
 .cell-22 {
@@ -117,12 +119,14 @@ hr {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKBAMAAAB/HNKOAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAG1BMVEUKEgyQu9EpcpZ1rckQS2lYjai9aiKZTgwAAABkWi8NAAAAAWJLR0QIht6VegAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAEFJREFUCNdjYGQychBgYBQychVgYGBLK2BgYFIyclFgYHIycnFgUGEycXAEkkqOLgwMyi6CAQwMKgyiQDUqjC4OANNiBwQZE3FgAAAAAElFTkSuQmCC');
 }
 
+/* exit/ladder icon */
 .cell-4 {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAASFBMVEW7Vid9LQghISFAQECuUCR0KgcJEQubRyCaRyCEPRxYIAYHDQgGCgdqMRZIGgUECAVRJREDBQQ4GgwlDQICAwIgDwcWCAEAAADpfI/8AAAAAWJLR0QXC9aYjwAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAEdJREFUCNc9xtsWgCAIRFEEjSy7kNj/f2qDDx3WGjZRYhaJpbn4CcxlQbmArKorTsC67agG23E2FLzuWdDs6WYWdB+vu4N/H3qYAue8EkiCAAAAAElFTkSuQmCC');
+  background-image: url('components/images/honeycomb-exit.png');
 }
 
+/* power-up CSS -- royal jelly */
 .cell-5 {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKBAMAAAB/HNKOAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAG1BMVEUKEgzRZzJjKQyKloxFS0Y5nh58v2kicAwAAABwmtv5AAAAAWJLR0QIht6VegAAAAlwSFlzAAAuIwAALiMBeKU/dgAAADFJREFUCNdjYGAQYgACZhcHEGXCACdZUwOAZFhoOJgsB5Kh4eUNDAzs5RUdQE5HRwMAoQMIkS2ttJsAAAAASUVORK5CYII=');
+  background-image: url('./components/images/royaljelly.png');
 }
 
 .cell-6 {

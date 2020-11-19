@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Weapon from './Weapon';
-import queenbee from './images/queenbee.svg'
+import queenbee from './images/queenbee.png'
 
 
 const defaultWeapon = new Weapon();
 
-export default class Player extends React.Component {
-    constructor() {
-        super();
+
+//set up all the default values as props
+class Player extends React.Component {
+    constructor(props) {
+        super(props);
         this.state = {
             health: 10, //initial value
             healthmax: 10,
             xp: 0,
             level: 1, 
             weapon: defaultWeapon,
-            playerTile: 'Coordinates?'
+            playerTile: { x: 0, y: 0 }
+            
         }
     }
 
@@ -45,3 +48,5 @@ export default class Player extends React.Component {
     }
     
 }
+
+export default Player;

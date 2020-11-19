@@ -1,6 +1,8 @@
 /* eslint-disable no-loop-func */
 import React from 'react'
-
+import RenderHpBar from './HealthBar.js';
+import renderHpBar from './HealthBar.js';
+import Player from './Player.js';
 
 const viewportSize = 6;
 var mapWidth = 50;
@@ -60,7 +62,6 @@ function frozeWeapon(damage, tile) {
   }
   return damage;
 }
-
 
 
 //=============================================
@@ -132,75 +133,6 @@ function updateTilesAccessibility(){
 
 var tasksQueue = [];
 
-function clickTile(e) {
-  tasksQueue.length = 0;
-  if (windowFocused && this.accessible) {
-    
-    allTiles.some(function(t){
-      t.distance = 0;
-      return false;
-    });
-    
-    debugger;
-    
-    var tile;
-    playerTile.distance = 1;
-    var tilesToMeasure = [playerTile];
-    while(tilesToMeasure.length > 0) {
-      tile = tilesToMeasure.shift();
-      var curDist = tile.distance + 1;
-      
-      if(tile.left === this){
-        tile = tile.left;
-        tile.distance = curDist;
-        break;
-      } else if(tile.right === this){
-        tile = tile.right;
-        tile.distance = curDist;
-        break;
-      } else if(tile.up === this){
-        tile = tile.up;
-        tile.distance = curDist;
-        break;
-      } else if(tile.down === this){
-        tile = tile.down;
-        tile.distance = curDist;
-        break;
-      } 
-      
-      if (tile.left && canPass(tile.left) && !tile.left.distance) {
-        tilesToMeasure.push(tile.left);
-        tile.left.distance = curDist;
-      }
-      if (tile.right && canPass(tile.right) && !tile.right.distance) {
-        tilesToMeasure.push(tile.right);
-        tile.right.distance = curDist;
-      }
-      if (tile.up && canPass(tile.up) && !tile.up.distance) {
-        tilesToMeasure.push(tile.up);
-        tile.up.distance = curDist;
-      }
-      if (tile.down && canPass(tile.down) && !tile.down.distance) {
-        tilesToMeasure.push(tile.down);
-        tile.down.distance = curDist;
-      }
-    }
-    while(tile && (tile !== playerTile)){
-      tasksQueue.push(tile);
-      if(tile.left && (tile.left.distance === (tile.distance-1))){
-        tile = tile.left;
-      } else if(tile.right && (tile.right.distance === (tile.distance-1))){
-        tile = tile.right;
-      } else if(tile.up && (tile.up.distance === (tile.distance-1))){
-        tile = tile.up;
-      } else if(tile.down && (tile.down.distance === (tile.distance-1))){
-        tile = tile.down;
-      }
-    }
-    
-    
-  }
-}
 
 function placeUnit(tile, pow, damage){
   var hp = pow*5*level;
@@ -269,30 +201,7 @@ function countOfNotWallNeighbors(tile){
 var field = [];
 var allTiles = [];
 
-function renderHpBar(hp, hp_max){
-  var hpPercent = hp / hp_max*100;
-  if(hpPercent < 100) {
-    
-    var hpSize = 3 + Math.round(Math.sqrt(hp_max))*2;
-    return React.DOM.div({
-      className:'hp-bar',
-      style:{
-        width: hpSize+'px',
-        left: ((tileSize-hpSize)/2)+'px'
-      }
-    },
-    React.DOM.div({
-      className:'hp-bar-sub',
-      style:{
-        width: hpPercent+'%'
-      }
-    }
-    )
-    )
-  }
-  return undefined;
-  
-}
+
 
 
 export default class Dungeon extends React.Component {
@@ -763,7 +672,7 @@ export default class Dungeon extends React.Component {
         
         if(x===0 && y===0){
           tileType = 'cell player';
-          label = renderHpBar(playerHP, playerHPmax);
+          label = <RenderHpBar health = {playerHP} healthmax = {playerHPmax}/>;
         } else {
           var tileLine = field[playerTile.x+x];
           tileType = 'cell cell-1';
@@ -774,7 +683,7 @@ export default class Dungeon extends React.Component {
               
               if(tile.unit) {
                 tileType += level;
-                label = renderHpBar(tile.unit.hp, tile.unit.hp_max);
+                label = <RenderHpBar health = {tile.unit.hp} healthmax = {tile.unit.hp_max}/>;
               }
               
               if(this.state.windowFocused && tile.accessible){
@@ -786,7 +695,7 @@ export default class Dungeon extends React.Component {
         
 
         cells.push(
-          <div key={x+'_'+y} className={tileType} onClick={clickTile.bind(tile)}>
+          <div key={x+'_'+y} className={tileType} >
             {label}
           </div>
         )
